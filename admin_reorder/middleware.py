@@ -22,14 +22,6 @@ class ModelAdminReorder(object):
                 'ADMIN_REORDER config parameter must be tuple or list. '
                 'Got {config}'.format(config=self.config))
 
-        admin_index = admin.site.index(request)
-        try:
-            # try to get all installed models
-            app_list = admin_index.context_data['app_list']
-        except KeyError:
-            # use app_list from context if this fails
-            pass
-
         # Flatten all models from apps
         self.models_list = []
         for app in app_list:
